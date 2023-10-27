@@ -1,8 +1,10 @@
 import 'package:fake_store/component_widgets/product_tile.dart';
 import 'package:fake_store/core/error_screen.dart';
+import 'package:fake_store/products_feature/product_details.dart';
 import 'package:fake_store/products_feature/products_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../core/palette.dart';
 import '../core/theme.dart';
@@ -81,7 +83,10 @@ class CartState extends ConsumerState<Cart> {
                           }
 
                           return ProductTile(
-                              onTap: () {},
+                              onTap: () {
+                                context.pushNamed(ProductDetails.name,
+                                    extra: product);
+                              },
                               product: product,
                               isLoading: updatingCart,
                               onPressedAddition: () async {
